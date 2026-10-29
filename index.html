@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eduardha Lima · AI Builder</title>
+<meta name="description" content="Portfólio de Eduardha Lima — AI Builder com olhar de QA, produto e negócio, a caminho da Gestão de Projetos.">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Portfólio Eduardha Lima — CSS puro ===== */
+:root{
+  --bg:oklch(0.980 0.008 56.3);        /* creme */
+  --bg2:oklch(0.949 0.016 42.4);       /* blush claro */
+  --ink:oklch(0.307 0.027 359.4);      /* vinho escuro suave */
+  --muted:oklch(0.579 0.030 3.4);
+  --rose:oklch(0.732 0.111 7.3);
+  --rose-deep:oklch(0.613 0.138 8.0);
+  --sage:oklch(0.758 0.040 149.8);
+  --peach:oklch(0.855 0.070 51.1);
+  --line:oklch(0.904 0.026 17.6);
+  --white:oklch(1 0 0);
+  --r:28px;
+  --shadow:0 20px 50px -20px oklch(0.613 0.138 8.0 / .35);
+  --pad:clamp(24px,6vw,96px);
+}
+.pf *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+.pf{overflow-x:clip;position:relative}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:clamp(16px,1.15vw,19px);line-height:1.6;-webkit-font-smoothing:antialiased}
+.pf img{max-width:100%;display:block}
+.pf h1,.pf h2,.pf h3{font-family:'Fraunces',serif;font-weight:500;line-height:1.05;letter-spacing:-.02em}
+.pf h1{font-size:clamp(52px,10vw,140px)}
+.pf h2{font-size:clamp(34px,5.2vw,72px);margin-bottom:clamp(20px,3vw,36px)}
+.pf h3{font-size:clamp(20px,1.8vw,26px);margin-bottom:8px}
+.pf em{font-style:italic;color:var(--rose-deep)}
+.pf a{color:var(--rose-deep);font-weight:700}
+.pf b{font-weight:700}
+
+/* ===== SEÇÕES (página contínua, sem divisões) ===== */
+.slide{padding:clamp(48px,7vw,96px) var(--pad);display:flex;flex-direction:column;justify-content:center;position:relative}
+.slide:first-child{min-height:100svh}
+.slide>*{position:relative;z-index:1}
+.slide>.blob{position:absolute;z-index:0}
+.kicker{display:inline-block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose-deep);background:var(--white);padding:7px 16px;border-radius:99px;margin-bottom:22px;box-shadow:var(--shadow);white-space:nowrap}
+.lead{font-size:clamp(18px,1.8vw,24px);max-width:720px;color:var(--muted);margin-top:22px}
+
+/* manchas suaves */
+.blob{width:clamp(420px,60vw,780px);aspect-ratio:1;border-radius:50%;opacity:.55;pointer-events:none;animation:float 10s ease-in-out infinite alternate}
+.blob.peach{background:radial-gradient(circle,var(--peach) 0%,transparent 68%)}
+.blob.rose{background:radial-gradient(circle,var(--rose) 0%,transparent 68%)}
+.blob.sage{background:radial-gradient(circle,var(--sage) 0%,transparent 68%)}
+@keyframes float{to{transform:translate(40px,-30px) scale(1.12)}}
+
+/* tags */
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.tag{background:var(--white);border:1px solid var(--line);border-radius:99px;padding:8px 18px;font-size:15px;white-space:nowrap;transition:.3s}
+.tag:hover{background:var(--rose);color:var(--white);transform:translateY(-3px)}
+.tag.f{background:var(--rose);color:var(--white);border-color:var(--rose)}
+
+/* cards — 6 por seção, grade sempre preenchida (3x2 / 2x3 / 1x6) */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px)}
+.card{background:var(--white);border-radius:var(--r);padding:clamp(22px,2.5vw,34px);box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.card:hover{transform:translateY(-8px) rotate(-.8deg)}
+.card p,.card li{color:var(--muted);font-size:.95em}
+.card ul{list-style:none;display:grid;gap:6px;margin-top:6px}
+.icon{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:26px;background:var(--bg2);margin-bottom:16px}
+
+/* lista */
+ul.t{list-style:none;display:grid;gap:14px;max-width:620px}
+ul.t li{padding-left:30px;position:relative}
+ul.t li::before{content:"✦";position:absolute;left:0;color:var(--rose)}
+
+/* layout 2 colunas */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px);align-items:center}
+
+/* fotos que passam */
+.photos{position:relative;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;background:linear-gradient(135deg,var(--peach),var(--rose));box-shadow:var(--shadow);outline:10px solid var(--white)}
+.photos.me{aspect-ratio:4/5;border-radius:50% 50% var(--r) var(--r);max-width:440px;justify-self:center;width:100%}
+.photos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:fade 12s infinite}
+.photos img:only-of-type{opacity:1;animation:none}
+.photos img:nth-of-type(2){animation-delay:4s}
+.photos img:nth-of-type(3){animation-delay:8s}
+@keyframes fade{0%{opacity:0;transform:scale(1.05)}5%,33%{opacity:1;transform:scale(1)}38%,100%{opacity:0}}
+.photos span{position:absolute;inset:0;display:grid;place-items:center;color:var(--white);font-size:14px;text-align:center;padding:24px}
+.result{margin-top:24px;display:inline-block;background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:16px;font-weight:500}
+
+/* casos (sem foto: texto + caixa de entregas) */
+.case{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(28px,5vw,72px);align-items:center}
+.case h2{margin-bottom:10px}
+.meta{color:var(--muted);font-size:15px;margin-bottom:26px;max-width:560px}
+.box{background:var(--white);border-radius:var(--r);padding:clamp(24px,3vw,40px);box-shadow:var(--shadow);display:grid;gap:26px}
+.label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:16px}
+ol.steps{list-style:none;counter-reset:s;display:grid;gap:12px}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;align-items:baseline;gap:10px;color:var(--ink);font-size:.95em}
+ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:'Fraunces',serif;font-style:italic;color:var(--rose)}
+.box .tags{margin-top:0;padding-top:22px;border-top:1px solid var(--line)}
+.box .tag{background:var(--bg2);border-color:transparent;font-size:14px;padding:6px 14px}
+
+/* trilha */
+.path{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,24px)}
+.step{background:var(--white);border-radius:var(--r);padding:clamp(20px,2.4vw,30px);box-shadow:var(--shadow);border-top:5px solid var(--sage)}
+.step.now{border-color:var(--rose)} .step.next{border-color:var(--rose-deep);transform:translateY(-14px)}
+.step small{color:var(--muted);text-transform:uppercase;letter-spacing:.15em;font-size:12px}
+
+/* animações de entrada */
+.reveal>*{opacity:0;transform:translateY(28px);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+.reveal>*:nth-child(2){animation-delay:.12s}.reveal>*:nth-child(3){animation-delay:.24s}.reveal>*:nth-child(4){animation-delay:.36s}.reveal>*:nth-child(5){animation-delay:.48s}
+@supports (animation-timeline:view()){
+  .reveal>*{animation:up linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+}
+@keyframes up{to{opacity:1;transform:none}}
+
+/* faixa que corre */
+.marquee{white-space:nowrap;overflow:hidden;font-family:'Fraunces',serif;font-style:italic;font-size:clamp(34px,6vw,84px);color:var(--rose);opacity:.5;margin-top:clamp(28px,5vh,56px)}
+.marquee div{display:inline-block;animation:mq 26s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width:900px){
+  .split{grid-template-columns:1fr}
+  .split .photos{order:-1}
+  .case{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .path{grid-template-columns:1fr}
+  .step.next{transform:none}
+}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr}
+  .kicker{white-space:normal}
+}
+@media (prefers-reduced-motion:reduce){.pf *{animation:none!important;opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+<main class="pf">
+<section class="slide">
+<div class="blob peach" style="top:-120px;right:-80px">
+</div>
+<div class="blob rose" style="bottom:-180px;left:-120px;animation-delay:2s">
+</div>
+<div class="reveal">
+<p class="kicker">Portfólio · IA para Negócios</p>
+<h1>Eduardha <em>Lima</em>
+</h1>
+<p class="lead">AI Builder que transforma ideias de negócio em soluções reais — com olhar de qualidade, cabeça de produto e o sonho de <b>liderar projetos</b>.</p>
+<div class="tags">
+<span class="tag f">AI Builder</span>
+<span class="tag">QA @ CESAR</span>
+<span class="tag">Produto &amp; Requisitos</span>
+<span class="tag">Futura Gerente de Projetos</span>
+</div>
+</div>
+<div class="marquee">
+<div>ideia → produto → resultado ✿ ideia → produto → resultado ✿ </div>
+</div>
+</section>
+<section class="slide">
+<div class="split">
+<div class="photos me">
+<span>Sua foto aqui: foto/eu.jpg</span>
+<img onerror="this.remove()" src="foto/eu.jpg" alt="Foto de Eduardha Lima">
+</div>
+<div class="reveal">
+<p class="kicker">Prazer, Eduardha</p>
+<h2>Curiosa por natureza, <em>construtora por escolha.</em>
+</h2>
+<p class="lead" style="margin-top:0">Estudo Análise e Desenvolvimento de Sistemas na FICR, pelo Embarque Digital, e descobri que o que me move é ver uma ideia sair do papel e ajudar pessoas de verdade.</p>
+<ul class="t" style="margin-top:22px">
+<li>Começo pelo <b>problema</b>, não pela ferramenta.</li>
+<li>Uso a IA como parceira para <b>entregar mais rápido</b> e com qualidade.</li>
+<li>Gosto de gente, de organização e de ver o time chegando junto ao resultado.</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="slide">
+<div class="reveal">
+<p class="kicker">O que eu entrego</p>
+<h2>Meu valor em <em>seis frentes</em>
+</h2>
+<div class="grid">
+<div class="card">
+<div class="icon">⚡</div>
+<h3>Automações</h3>
+<p>Fluxos com IA que tiram o trabalho repetitivo do caminho do time.</p>
+</div>
+<div class="card">
+<div class="icon">🌱</div>
+<h3>Produtos do zero</h3>
+<p>Da ideia ao sistema funcionando, em dias ou semanas.</p>
+</div>
+<div class="card">
+<div class="icon">📊</div>
+<h3>Dados que decidem</h3>
+<p>Painéis e relatórios que viram decisão, não só gráfico.</p>
+</div>
+<div class="card">
+<div class="icon">🔍</div>
+<h3>Qualidade</h3>
+<p>Requisitos claros, testes e cuidado com cada detalhe.</p>
+</div>
+<div class="card">
+<div class="icon">🪙</div>
+<h3>Uso consciente de tokens</h3>
+<p>IA com custo sob controle: o modelo certo, o prompt enxuto e nada de desperdício.</p>
+</div>
+<div class="card">
+<div class="icon">🤝</div>
+<h3>Ética profissional</h3>
+<p>Transparência, respeito aos dados e responsabilidade em cada entrega.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide">
+<div class="case">
+<div class="reveal">
+<p class="kicker">Caso 01 · Solução para RH</p>
+<h2>Bene<em>Core</em>
+</h2>
+<p class="meta">Residência Tecnológica · Porto Digital (Rise Up) · fev–jun 2026 · Squad 3</p>
+<ul class="t">
+<li>
+<b>Problema<!-- -->:</b> <!-- -->triagem e gestão de benefícios de RH feitas à mão, espalhadas e sem rastreabilidade.</li>
+<li>
+<b>Solução<!-- -->:</b> <!-- -->automação de benefícios no ServiceNow, com Table Builder, Flow Designer, Decision Tables, ACLs e Report Designer.</li>
+<li>
+<b>Meu papel<!-- -->:</b> <!-- -->desenvolvedora do squad: modelagem, fluxos, regras de negócio e o pitch final.</li>
+</ul>
+<span class="result">🏆 Selecionado entre os squads para o CODAY · Porto Digital</span>
+</div>
+<div class="box reveal">
+<div>
+<p class="label">Principais entregas</p>
+<ol class="steps">
+<li>Modelagem dos dados com Table Builder</li>
+<li>Automações de ponta a ponta com Flow Designer</li>
+<li>Regras de negócio configuradas em Decision Tables</li>
+<li>Controle de acesso e aprovações com ACLs</li>
+<li>Dashboards de acompanhamento com Report Designer</li>
+<li>Estruturei e apresentei o pitch no CODAY</li>
+</ol>
+</div>
+<div class="tags">
+<span class="tag">ServiceNow</span>
+<span class="tag">Table Builder</span>
+<span class="tag">Flow Designer</span>
+<span class="tag">Decision Tables</span>
+<span class="tag">ACLs</span>
+<span class="tag">Report Designer</span>
+</div>
+</div>
+</div>
+</section>
+<section class="slide">
+<div class="case">
+<div class="reveal">
+<p class="kicker">Caso 02 · IA no dia a dia</p>
+<h2>Qualidade com <em>IA ao lado</em>
+</h2>
+<p class="meta">Technical Assistant in QA · CESAR · nov 2025 – hoje</p>
+<ul class="t">
+<li>
+<b>Contexto<!-- -->:</b> <!-- -->apoio técnico a times de Software, QA, Design e Dados, com inglês técnico na rotina.</li>
+<li>
+<b>Como<!-- -->:</b> <!-- -->IA Generativa para criar cenários de teste, analisar requisitos e acelerar validações.</li>
+<li>
+<b>Visão de negócio<!-- -->:</b> <!-- -->Shift-Left Testing: cada falha encontrada cedo é um risco evitado lá na frente.</li>
+</ul>
+<span class="result">🧭 1 ano apoiando 4 times: Software, QA, Design e Dados</span>
+</div>
+<div class="box reveal">
+<div>
+<p class="label">Principais entregas</p>
+<ol class="steps">
+<li>Testes manuais e automatizados</li>
+<li>Testes de API com Postman, Insomnia e Bruno</li>
+<li>Análise e acompanhamento de requisitos e entregas</li>
+<li>Registro e rastreio de inconsistências até a correção</li>
+<li>Documentação e alinhamento em inglês técnico</li>
+<li>Ponte entre áreas para resolver problemas juntos</li>
+</ol>
+</div>
+<div class="tags">
+<span class="tag">Postman</span>
+<span class="tag">Insomnia</span>
+<span class="tag">Bruno</span>
+<span class="tag">Allure TestOps</span>
+<span class="tag">DBeaver</span>
+<span class="tag">TDD / BDD</span>
+</div>
+</div>
+</div>
+</section>
+<section class="slide">
+<div class="case">
+<div class="reveal">
+<p class="kicker">Caso 03 · Do zero em 3 semanas</p>
+<h2>Gestão de tarefas <em>completa</em>
+</h2>
+<p class="meta">Formação Full Stack · CESAR + Télos (Inova.ação PCD) · 640 horas</p>
+<ul class="t">
+<li>
+<b>Desafio<!-- -->:</b> <!-- -->projeto final da formação: um sistema real, com prazo curto e escopo apertado.</li>
+<li>
+<b>Entrega<!-- -->:</b> <!-- -->um sistema completo de gerenciamento de tarefas, do banco de dados à tela, com auxílio de IA.</li>
+<li>
+<b>Como<!-- -->:</b> <!-- -->planejar o escopo, priorizar o essencial, construir e testar em ciclos curtos.</li>
+</ul>
+<span class="result">🚀 Sistema completo em 3 semanas</span>
+</div>
+<div class="box reveal">
+<div>
+<p class="label">Principais entregas</p>
+<ol class="steps">
+<li>Levantamento de requisitos e definição do escopo</li>
+<li>Modelagem e criação do banco de dados</li>
+<li>Desenvolvimento das telas e regras do sistema</li>
+<li>IA como parceira para acelerar código e revisão</li>
+<li>Testes antes de cada entrega</li>
+<li>Mentorias de soft skills ao longo da formação</li>
+</ol>
+</div>
+<div class="tags">
+<span class="tag">JavaScript</span>
+<span class="tag">TypeScript</span>
+<span class="tag">Python</span>
+<span class="tag">SQL</span>
+<span class="tag">Git / GitHub</span>
+<span class="tag">IA Generativa</span>
+</div>
+</div>
+</div>
+</section>
+<section class="slide">
+<div class="case">
+<div class="reveal">
+<p class="kicker">Caso 04 · Educação + tecnologia</p>
+<h2>Educa<em>minho</em>
+</h2>
+<p class="meta">Residência Tecnológica · Porto Digital (Kick Off) · ago–dez 2025 · foco nas ODS</p>
+<ul class="t">
+<li>
+<b>Problema<!-- -->:</b> <!-- -->pouco interesse dos estudantes por Geografia e História e distância da própria cidade.</li>
+<li>
+<b>Solução<!-- -->:</b> <!-- -->app de mapa interativo com geolocalização, gamificação e aprendizagem ativa.</li>
+<li>
+<b>Meu papel<!-- -->:</b> <!-- -->trouxe o olhar da Educação para o produto e ajudei a montar o pitch.</li>
+</ul>
+<span class="result">🗺️ Protótipo funcional, da ideia à apresentação</span>
+</div>
+<div class="box reveal">
+<div>
+<p class="label">Principais entregas</p>
+<ol class="steps">
+<li>MVP desenhado no Figma</li>
+<li>Proposta de mapa interativo com geolocalização</li>
+<li>Mecânicas de gamificação para engajar estudantes</li>
+<li>IA como apoio na produção do conteúdo</li>
+<li>Estruturação do pitch e apresentação da solução</li>
+<li>Protótipo funcional a partir de um problema real</li>
+</ol>
+</div>
+<div class="tags">
+<span class="tag">Figma</span>
+<span class="tag">Geolocalização</span>
+<span class="tag">Gamificação</span>
+<span class="tag">IA Generativa</span>
+<span class="tag">ODS</span>
+<span class="tag">Pitch</span>
+</div>
+</div>
+</div>
+</section>
+<section class="slide">
+<div class="reveal">
+<p class="kicker">O que me forma</p>
+<h2>Estudo, prática e <em>propósito</em>
+</h2>
+<div class="grid">
+<div class="card">
+<div class="icon">🎓</div>
+<h3>Educação</h3>
+<ul>
+<li>Análise e Desenvolvimento de Sistemas — FICR (Embarque Digital)</li>
+<li>3º período · formatura prevista 2027.2</li>
+</ul>
+</div>
+<div class="card">
+<div class="icon">📚</div>
+<h3>Cursos &amp; formações</h3>
+<ul>
+<li>Formação Full Stack — CESAR + Télos</li>
+<li>Technology Residency — CESAR</li>
+<li>Residência Tecnológica — Porto Digital</li>
+<li>Bootcamp de QA — Atlântico Avanti</li>
+<li>Automação com n8n e Agentes de IA com n8n — Rocketseat</li>
+</ul>
+</div>
+<div class="card">
+<div class="icon">💗</div>
+<h3>Liderança &amp; voluntariado</h3>
+<p>Vice-representante de turma, Jovem Protagonista no ICE (3 anos) e voluntária de Marketing e Engajamento na Manas Tech. Facilito, organizo e conecto pessoas.</p>
+</div>
+<div class="card">
+<div class="icon">🧩</div>
+<h3>Produto &amp; requisito</h3>
+<p>Do QA aprendi a traduzir negócio em requisito testável — e requisito em entrega.</p>
+</div>
+<div class="card">
+<div class="icon">🔄</div>
+<h3>Ágil na prática</h3>
+<p>Scrum, Kanban e cultura DevOps vividos em times reais, não só em sala.</p>
+</div>
+<div class="card">
+<div class="icon">🤖</div>
+<h3>IA no dia a dia</h3>
+<p>Automações e agentes de IA aplicados no trabalho real, do teste à entrega.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide">
+<div class="blob sage" style="top:10%;right:-160px">
+</div>
+<div class="reveal">
+<p class="kicker">Para onde vou</p>
+<h2>AI Builder é minha <em>porta de entrada.</em>
+</h2>
+<div class="path">
+<div class="step">
+<small>Base</small>
+<h3>Qualidade &amp; Requisitos</h3>
+<p>Entender o que precisa ser feito.</p>
+</div>
+<div class="step now">
+<small>Agora</small>
+<h3>AI Builder</h3>
+<p>Construir de ponta a ponta com IA.</p>
+</div>
+<div class="step next">
+<small>Futuro</small>
+<h3>Gerente de Projetos</h3>
+<p>Liderar pessoas e entregas que geram valor.</p>
+</div>
+</div>
+<p class="lead">Quem constrói sabe estimar, priorizar e conversar com todos os lados. É essa gerente que eu quero ser.</p>
+</div>
+</section>
+<section class="slide">
+<div class="blob peach" style="bottom:-160px;right:-100px">
+</div>
+<div class="reveal">
+<p class="kicker">Ferramentas &amp; contato</p>
+<h2>Vamos <em>construir juntos?</em>
+</h2>
+<div class="tags">
+<span class="tag f">Claude</span>
+<span class="tag f">ChatGPT</span>
+<span class="tag f">Cursor</span>
+<span class="tag f">Lovable</span>
+<span class="tag">ServiceNow</span>
+<span class="tag">n8n</span>
+<span class="tag">Python · Pandas</span>
+<span class="tag">SQL</span>
+<span class="tag">JavaScript / TypeScript</span>
+<span class="tag">Postman</span>
+<span class="tag">Allure TestOps</span>
+<span class="tag">Git</span>
+<span class="tag">Docker</span>
+<span class="tag">Scrum</span>
+<span class="tag">Kanban</span>
+<span class="tag">Inglês técnico</span>
+</div>
+<p class="lead">💼<!-- --> <a href="https://www.linkedin.com/in/eduardhalima" target="_blank" rel="noreferrer">LinkedIn — Eduardha Lima</a>
+</p>
+</div>
+<div class="marquee">
+<div>obrigada ✿ eduardha lima ✿ ai builder ✿ obrigada ✿ eduardha lima ✿ ai builder ✿<!-- --> </div>
+</div>
+</section>
+</main>
+</body>
+</html>
